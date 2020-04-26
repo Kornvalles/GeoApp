@@ -3,7 +3,7 @@ require("dotenv").config({ path: path.join(process.cwd(), ".env") });
 import * as mongo from "mongodb";
 import { bryptAsync } from "./bcrypt-async-helper";
 const MongoClient = mongo.MongoClient;
-import { positionCreator } from "./geoUtils";
+import * as gju from "./geoUtils";
 import {
   USER_COLLECTION_NAME,
   POSITION_COLLECTION_NAME,
@@ -54,10 +54,10 @@ const client = new MongoClient(uri, {
     );
     await positionsCollection.createIndex({ location: "2dsphere" });
     const positions = [
-      positionCreator(12.48, 55.77, team1.userName, team1.name, true),
-      positionCreator(12.49, 55.77, team2.userName, team2.name, true),
-      positionCreator(12.5, 55.77, team3.userName, team3.name, true),
-      positionCreator(12.51, 55.77, "xxx", "yyy", false)
+      gju.positionCreator(12.48, 55.77, team1.userName, team1.name, true),
+      gju.positionCreator(12.48, gju.getLatitudeInside(55.77,100), team2.userName, team2.name, true),
+      gju.positionCreator(12.48, gju.getLatitudeOutside(55.77,100), team3.userName, team3.name, true),
+      gju.positionCreator(12.48, 55.77, "xxx", "yyy", false)
     ];
     const locations = await positionsCollection.insertMany(positions);
     const postCollection = db.collection(POST_COLLECTION_NAME);

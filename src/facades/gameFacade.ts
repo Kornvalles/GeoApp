@@ -96,8 +96,8 @@ export default class GameFacade {
         return {
           userName: player.userName,
           name: player.name,
-          lat: latitude,
-          lon: longitude
+          lat: player.location.coordinates[0],
+          lon: player.location.coordinates[1]
         };
       });
       return formatted;
