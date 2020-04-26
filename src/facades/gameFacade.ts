@@ -115,7 +115,7 @@ export default class GameFacade {
       const found = await positionsCollection.find({
         userName: { $ne: clientUserName },
         location: {
-          $near: {
+          $nearSphere: {
             $geometry: {
               type: "Point",
               coordinates: [point.coordinates[0], point.coordinates[1]]

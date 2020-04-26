@@ -11,10 +11,10 @@ const latOutside = 55.772780384609256 + ((DISTANCE_TO_CENTER + 1) / 111337.6487)
 */
 
 function getLatitudeInside(latitude: number, radius: number) {
-  return latitude + ((radius - 1) / 111337.6487)
+  return latitude + ((radius - 1) / 111337.5980011507)
 }
 function getLatitudeOutside(latitude: number, radius: number) {
-  return latitude + ((radius + 1) / 111337.6487)
+  return latitude + ((radius + 1) / 111337.5980011507)
 }
 
 function positionCreator(lon: number, lat: number, userName: string, name: string, dateInFuture: boolean): IPosition {
