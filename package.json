@@ -28,6 +28,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/geojson": "^7946.0.7",
     "basic-auth": "^2.0.1",
     "bcryptjs": "^2.4.3",
     "concurrently": "^5.1.0",
